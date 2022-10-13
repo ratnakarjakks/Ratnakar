@@ -1,0 +1,49 @@
+public class Menu {
+    public static void main(String[] args) throws SQLException {
+
+        Connection c = DriverManager.getConnection("JDBC:mysql://localhost:3306/db2","root","Amitha");
+        Statement s = c.createStatement();
+        int choice;
+        System.out.println("Enter your Choice from 1 to 6");
+        Scanner n= new Scanner(System.in);
+        choice=n.nextInt();
+        if(choice==1){
+        s.executeUpdate("create table empl(id int primary key ,name varchar(30),salary int)");
+                System.out.println("table created");
+    }
+        if(choice==2){
+            s.executeUpdate("insert into empl values(1,'Amitha',10000),(2,'Kavitha',20000)");
+            System.out.println("data inserted");
+}
+        if(choice==3){
+            ResultSet rs= s.executeQuery("select *from empl");
+            while(rs.next()){
+                System.out.println(rs.getInt(1)+" "+rs.getString(2)+" "+rs.getDouble(3));
+
+        }}if(choice==4){
+            String Query;
+            System.out.println("enter query to update in table");
+            Scanner u= new Scanner(System.in);
+            Query=u.nextLine();
+            s.executeUpdate(Query);
+            ResultSet rs= s.executeQuery("select *from empl");
+            while(rs.next()){
+                System.out.println(rs.getInt(1)+" "+rs.getString(2)+" "+rs.getString(3));
+            }}if(choice==5){
+                String Query1;
+                System.out.println("enter query to delete data in table");
+                Scanner d= new Scanner(System.in);
+                Query1=d.nextLine();
+                s.executeUpdate(Query1);
+                ResultSet rs= s.executeQuery("select *from empl");
+                while(rs.next()){
+                    System.out.println(rs.getInt(1)+" "+rs.getString(2)+" "+rs.getString(3));
+                }}if(choice==6){
+                System.out.println("Program exited");
+                System.exit(2);
+                System.out.println("Not Exited");
+            }
+            if(choice>6||choice<1){
+                System.out.println("enter valid number");
+        }
+    }}
