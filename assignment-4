@@ -1,0 +1,25 @@
+class Product{
+
+    String name;
+    float price;
+    public Product( String name, float price) {
+
+        this.name = name;
+        this.price = price;
+    }
+}
+ class JavaStreamExample {
+    public static void main(String[] args) {
+        List<Product> productsList = new ArrayList<Product>();
+        productsList.add(new Product("HP ",25000f));
+        productsList.add(new Product("Dell ",35000f));
+        productsList.add(new Product("Lenevo ",28000f));
+        productsList.add(new Product("Sony ",28000f));
+        productsList.add(new Product("Apple ",90000f));
+        System.out.println(
+                productsList.stream()
+                .filter(p -> p.price > 30000)
+                        .map(p->p.price)
+                        .reduce((float) 0, (v1, v2) -> v1 + v2));
+    }
+}
