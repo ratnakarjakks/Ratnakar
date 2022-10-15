@@ -1,0 +1,37 @@
+package com.operative.advjava;
+
+import java.util.ArrayList;
+import java.util.stream.Collectors;
+
+class ProductTest {
+	int OrderID;
+	String name;
+	Double Price;
+	
+ public	ProductTest(int OrderID, String name, Double Price){
+		this.OrderID=OrderID;
+		this.name=name;
+		this.Price=Price;
+	}
+
+public Double getPrice() {
+	return Price;
+}
+
+}
+
+public class ProductClass {
+	
+	public static void main(String[] args) {
+		ArrayList<ProductTest> al = new ArrayList<ProductTest>();
+		al.add(new ProductTest(23456,"Iphone",57000.0));
+		al.add(new ProductTest(45678,"Iphone13",97000.0));
+		al.add(new ProductTest(12345,"Samsung S21",37000.0));
+		al.add(new ProductTest(23456,"Nokia",17000.0));
+		al.add(new ProductTest(34567,"Oppo",7000.0));
+		
+		al.stream().forEach((a)->System.out.println(a.name+" "+a.OrderID+" "+a.Price)); 
+		System.out.println(al.stream().map(ProductTest::getPrice).collect(Collectors.toList()));
+	}
+
+}
