@@ -1,0 +1,45 @@
+        public class Aray {
+    Integer sal;
+    String name;
+
+    public Aray(Integer sal, String name) {
+        this.sal = sal;
+        this.name = name;
+    }
+
+    public void setSalary(Integer sal) {
+        this.sal = sal;
+    }
+
+    // get salary
+    public double getSalary() {
+        return sal;
+    }
+
+    public String toString() {
+        return this.sal + ", " + this.name;
+    }
+
+
+    public static void main(String[] args) {
+
+
+
+        ArrayList<Aray> list = new ArrayList<>();
+        list.add(new Aray(100, "emp1"));
+        list.add(new Aray(150, "emp2"));
+        list.add(new Aray(200, "emp3"));
+        list.add(new Aray(100, "emp4"));
+
+
+
+        System.out.println("Complete Employee list: ");
+        System.out.println(list.stream().map(Aray::getSalary).sorted());
+        list.stream()
+                .sorted((p1, p2) -> p1.sal.compareTo(p2.sal))
+                .forEach(System.out::println);
+
+        list.stream().sorted((p1, p2) -> p1.name.compareTo(p2.name))
+                .forEach(System.out::println);
+    }
+}
